@@ -1,0 +1,51 @@
+<div class="container mt-4">
+  <div class="card">
+    <h1>Registro de usuario</h1>
+    <form>
+      <div class="form-group">
+        <label>Nombre</label>
+        <input type="text" [(ngModel)]="nombre" [ngModelOptions]="{standalone: true}" class="form-control" id="nombre" placeholder="Ingresa el nombre">
+      </div>
+
+      <div class="form-group">
+        <label>CURP</label>
+        <input type="text" [(ngModel)]="curp" [ngModelOptions]="{standalone: true}" class="form-control" id="curp" placeholder="Ingresa tu CURP"/>
+      </div>
+
+      <div class="form-group">
+        <label>Correo Electrónico</label>
+        <input type="text" [(ngModel)]="correo_electronico" [ngModelOptions]="{standalone: true}" class="form-control" id="correo_electronico" placeholder="Ingresa tu correo electrónico"/>
+      </div>
+
+      <button type="submit" class="btn btn-primary mt-4" (click)="save()">Enviar</button>
+    </form>
+  </div>
+
+  <div class="container mt-4">
+    <h1>Usuarios</h1>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">CURP</th>
+          <th scope="col">Correo Electrónico</th>
+          <th scope="col">Option</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let UsuarioItem of UsuarioArray">
+          <th scope="row">{{UsuarioItem.id}}</th>
+          <td>{{UsuarioItem.nombre | uppercase}}</td>
+          <td>{{UsuarioItem.curp}}</td>
+          <td>{{UsuarioItem.correo_electronico}}</td>
+          <td>
+            <button type="button" class="btn btn-success" (click)="setUpdate(UsuarioItem)">Edit</button>
+            <button type="button" class="btn btn-danger" (click)="setDelete(UsuarioItem)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
